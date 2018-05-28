@@ -42,9 +42,13 @@
 
      <script type="text/babel">
       var iotValues = getValues();
-      console.log(iotValues)
+      const timeElement = new Date(iotValues.timestamp).toString();
       const beerElement = Math.floor(iotValues.weight - 60);
       const tempElement = 1.8 * iotValues.temp + 32;
+
+       ReactDOM.render(timeElement,
+         document.getElementById('time')
+       );
 
        ReactDOM.render(beerElement,
          document.getElementById('beers')
@@ -59,6 +63,7 @@
     <main role="main">
 
       <div class="container text-center">
+          <h5>Last Update: <span id="time"/></h5>
           <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
               <div class="carousel-item active">
