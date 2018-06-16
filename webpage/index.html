@@ -11,6 +11,7 @@
     <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery-Knob/1.2.13/jquery.knob.min.js"></script>
 
 
     <title>Beer Fridge X-Ray</title>
@@ -18,7 +19,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
 
   </head>
-  <body>
+  <body class="text-light bg-dark">
 
     <div id="root"></div>
      <script>
@@ -50,36 +51,41 @@
          document.getElementById('time')
        );
 
-       ReactDOM.render(beerElement,
-         document.getElementById('beers')
-       );
+       var beer = document.getElementById("beers");
+       beer.value = beerElement;
 
-       ReactDOM.render(tempElement,
-         document.getElementById('temp')
-       );
+       var temp = document.getElementById("temp");
+       temp.value = tempElement;
 
      </script>
 
-    <main role="main" class="text-light bg-dark" style="padding-bottom: 10em;">
+    <main role="main" class="text-light bg-dark">
 
       <div class="container text-center">
           <h5>Last Update: <span id="time"/></h5>
           <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
               <div class="carousel-item active">
-                <h1>Beers</h1>
-                <h3>~<span id="beers"/></h3>
+                <h1 style="color:#66EE66">Beers</h1>
+                <h3>
+                  <input type="text" id="beers" data-min="0" data-max="30" class="dial" data-readOnly="true" data-fgcolor="#66EE66">
+                </h3>
               </div>
               <div class="carousel-item">
-                <h1>Temperature</h1>
+                <h1 style="color:rgb(135, 206, 235)">Temperature</h1>
                 <h3>
-                  <span id="temp"></span>
-                  <span>&deg;</span>
+                  <input type="text" id="temp" data-min="20" data-max="60" class="dial" data-readOnly="true">
                 </h3>
               </div>
             </div>
           </div>
         </div>
+
+        <script>
+            $(function() {
+                $(".dial").knob();
+            });
+        </script>
 
       <!-- FOOTER
       <footer class="container">
