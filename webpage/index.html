@@ -43,7 +43,7 @@
 
      <script type="text/babel">
       var iotValues = getValues();
-      const timeElement = new Date(iotValues.timestamp).toString();
+      const timeElement = new Date(iotValues.timestamp).toLocaleString();
       const beerElement = Math.floor(iotValues.weight - 55);
       const tempElement = 1.8 * iotValues.temp + 32;
 
