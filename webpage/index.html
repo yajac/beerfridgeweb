@@ -45,7 +45,7 @@
       var iotValues = getValues();
       const timeElement = new Date(iotValues.timestamp).toLocaleString('en-US', { timeZone: 'America/New_York' });
       const beerElement = Math.floor(iotValues.weight - 55);
-      const tempElement = 1.8 * iotValues.temp + 32;
+      const tempElement = Math.floor(1.8 * iotValues.temp + 32);
 
        ReactDOM.render(timeElement,
          document.getElementById('time')
@@ -68,7 +68,7 @@
               <div class="carousel-item active">
                 <h1 style="color:#66EE66">Beers</h1>
                 <h3>
-                  <input type="text" id="beers" data-min="0" data-max="30" class="dial" data-readOnly="true" data-fgcolor="#66EE66">
+                  <input type="text" id="beers" data-min="0" data-max="50" class="dial" data-readOnly="true" data-fgcolor="#66EE66">
                 </h3>
               </div>
               <div class="carousel-item">
